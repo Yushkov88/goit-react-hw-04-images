@@ -1,13 +1,13 @@
+import { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import fetchImagesWithQuery from 'services/api';
 import Modal from './Modal/Modal';
 import Loader from './Loader/Loader';
 import Button from './Button/Button';
-import s from './App.module.css';
-import { useState, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import s from './App.module.css';
 
 export default function App() {
   const [searchData, setSearchData] = useState('');
@@ -16,8 +16,6 @@ export default function App() {
   const [largeImage, setLargeImage] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!page) {
@@ -37,7 +35,6 @@ export default function App() {
         setIsLoading(false);
       });
     } catch (error) {
-      setError(error);
       setIsLoading(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
